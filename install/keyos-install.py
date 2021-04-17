@@ -2,6 +2,7 @@
 import sys
 import ezconf
 import subprocess
+import os
 from PyQt5 import QtWidgets, uic
 
 # Colours + elems
@@ -25,6 +26,14 @@ dep_count = len(config.get("packages"))
 tools = config.get("tools")
 tool_count =  len(config.get("tools"))
 
+# Presetup
+print("=========================")
+cmd = "sudo add-apt-repository ppa:kgilmer/speed-ricer".split(" ")
+cmd = subprocess.run(cmd, text=True)
+if cmd.returncode != 0:
+	print(blue+"[Warn] An error occured while doing pre-setup, but it's not important!"+reset)
+
+
 print('''==========================
 Required deps  : {}
 Required tools : {}
@@ -32,14 +41,11 @@ Required tools : {}
 
 print("Starting UI...")
 
-# Presetup
-os.system("sudo add-apt-repository ppa:kgilmer/speed-ricer")
-
 # Setting up other parts
 def setup_others():
 	print("You are about to install the themes additional packages, proceed?")
 	# Configs
-	cmd = "mkdir ~/.config && cp -r ../configs/* ~/.config/".split(" ")
+	cmd = "cp -r configs/* ~/.config/".split(" ")
 	cmd = subprocess.run(cmd, text=True)
 	if cmd.returncode != 0:
 		print(red+"[Error] An error occured while installing configuration files!"+reset)
@@ -53,10 +59,7 @@ def setup_others():
 	cmd = subprocess.run(cmd, text=True)
 	if cmd.returncode != 0:
 		print(red+"[Error] An error occured while cloning uhubctl!"+reset)
-	cmd = "cd uhubctl && make".split(" ")
-	cmd = subprocess.run(cmd, text=True)
-	if cmd.returncode != 0:
-		print(red+"[Error] An error occured while making uhubctl!"+reset)
+	os.system("cd uhubctl && make")
 
 # Installation
 

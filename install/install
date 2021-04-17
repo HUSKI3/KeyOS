@@ -1,1 +1,1 @@
-python3.8 -m poetry run sudo python3 main.py
+python3.8 -m poetry run sudo python3 keyos-install.py
