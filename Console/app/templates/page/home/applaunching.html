@@ -1,0 +1,59 @@
+<head>
+	<style type="text/css">body {
+  background: white;
+}
+
+.launch-screen {
+  background-color: white;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: clip-path 5s;
+  clip-path: circle(71% at 50% 50%);
+}
+
+.launch-screen::before {
+  position: absolute;
+  content: '';
+  width: 100vw;
+  height: 100vh;
+  background-color: #00a2e9;
+  clip-path: circle(71% at 50% 50%);
+  animation: motion 5s;
+}
+
+.launch-screen::after {
+  position: absolute;
+  font-family: sans-serif;
+  font-size: 80px;
+  font-weight: 900;
+  content: 'App Starting, Please wait';
+  color: white;
+}
+
+@keyframes motion {
+  from { clip-path: circle(0 at 50% 50%); }
+  to { clip-path: circle(71% at 50% 50%); }
+}
+
+.launch-screen--close {
+  background-color: inherit;
+  clip-path: circle(0% at 50% 50%);
+}</style>
+</head>
+<div class="launch-screen"></div>
+<script type="text/javascript">window.setTimeout(() => {
+  if (document.readyState === 'interactive' || document.readyState === 'complete') close();
+  else document.addEventListener('DOMContentLoaded', close);
+}, 1500)
+
+function close() {
+  document.removeEventListener('DOMContentLoaded', close);
+  document.querySelector('.launch-screen')
+    .classList.add('launch-screen--close')
+}</script>
