@@ -1,0 +1,2 @@
+export JETSON_ROOTFS_DIR=/media/drive1/JetsonNano/rootfs
+sudo -E ./create-rootfs.sh
