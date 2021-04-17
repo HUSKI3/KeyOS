@@ -32,10 +32,28 @@ Required tools : {}
 
 print("Starting UI...")
 
+# Setting up other parts
+def setup_others():
+	print("You are about to install the themes additional packages, proceed?")
+	# Configs
+	# Touchegg
+	cmd = "sudo add-apt-repository ppa:touchegg/stable".split(" ")
+	cmd = subprocess.run(command, text=True)
+	if cmd.returncode != 0:
+		print(red+"[Error] An error occured while adding the touchegg repo!"+reset)
+	# uhubctl
+	cmd = "git clone https://github.com/mvp/uhubctl".split(" ")
+	cmd = subprocess.run(command, text=True)
+        if cmd.returncode != 0:
+                print(red+"[Error] An error occured while cloning uhubctl!"+reset)
+	cmd = "cd uhubctl && make".split(" ")
+        cmd = subprocess.run(command, text=True)
+        if cmd.returncode != 0:
+                print(red+"[Error] An error occured while making uhubctl!"+reset)
 # Installation
 
 def install(app):
-	command = "sudo apt install {}".format(app).split(" ")
+	command = "sudo apt install {} -y".format(app).split(" ")
 	cmd = subprocess.run(command, text=True)
 
 # UI
@@ -62,6 +80,7 @@ class win(QtWidgets.QMainWindow):
 				for tool in tools:
 					install(tool)
 				self.close()
+				setup_others()
 		except Exception as e:
 			print(e)
 			quit()
