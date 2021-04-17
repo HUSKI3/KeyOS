@@ -1,0 +1,5 @@
+
+# Requires
+```
+$ apt install libusb-1.0-0-dev libusb-dev libjsoncpp-dev libxinerama-dev libxrandr-dev libxi-dev libxcursor-dev libusb-1.0-0-dev
+```
