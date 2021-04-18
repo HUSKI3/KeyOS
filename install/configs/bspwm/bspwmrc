@@ -32,8 +32,5 @@ bspc rule -a mplayer2 state=floating
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
 
-compton --backend glx --paint-on-overlay --vsync opengl-swc &
-pkill -9 xwinwrap
-animbg&
-
+compton&
 
