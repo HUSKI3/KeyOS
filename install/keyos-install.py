@@ -43,7 +43,7 @@ print("Starting UI...")
 
 # Setting up other parts
 def setup_others():
-	print("You are about to install the themes additional packages, proceed?")
+	print("You are about to install the themes additional packages")
 	# Configs
 	os.system("cp -r configs/* ~/.config/")
 	# Touchegg
@@ -106,6 +106,8 @@ This is a development build, if things go wrong they make break your system.
 You are about to install {} packages and {} tool/s
 Packages: {}
 Tools: {}
+
+THE INSTALLER WILL FREEZE DURING THE INSTALL, DO NOT CLOSE THE INSTALLER
 '''.format(dep_count,tool_count, deps, tools))
 		self.button = self.findChild(QtWidgets.QPushButton, 'accept')
 		self.button.clicked.connect(self.acceptButtonPressed)
