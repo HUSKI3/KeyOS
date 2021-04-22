@@ -46,6 +46,12 @@ def setup_others():
 	print("You are about to install the themes additional packages")
 	# Configs
 	os.system("cp -r configs/* ~/.config/")
+	# git clone --depth=1 https://github.com/adi1090x/rofi.git
+	cmd = "git clone --depth=1 https://github.com/adi1090x/rofi.git && cd rofi && chmod +x setup.sh && bash setup.sh".split(" ")
+	cmd = subprocess.run(cmd, text=True)
+	if cmd.returncode != 0:
+		print(red+"[Error] An error occured while installing the rofi theme! Quitting"+reset)
+		quit()
 	# Touchegg
 	cmd = "sudo add-apt-repository ppa:touchegg/stable".split(" ")
 	cmd = subprocess.run(cmd, text=True)

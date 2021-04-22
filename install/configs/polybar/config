@@ -19,13 +19,17 @@
 
 background = #bb2f343f
 
-bg = #202330 ;
-bg1 = #5e5e5e ;
-bg2 = #292929 ;
-bg3 = #2e2e2e ;
-bg4 = #b3b3b3 ;
-bg5 = #cccccc ;
-fg = #FFFFFF;
+bg = #202330 
+bg1 = #202330
+;#5e5e5e 
+bg2 = #202330
+;#292929 
+bg3 = #202330
+;#2e2e2e 
+bg4 = #b3b3b3 
+bg5 = #cccccc 
+fg = #202330
+;#FFFFFF
 alpha = #00000000
 
 acolor = #dedede; 
@@ -51,16 +55,16 @@ txt1 = #010101
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 [bar/main]
-width = 96%
+width = 20%
 height = 36.5
-offset-x = 2%
+offset-x = 40%
 offset-y = 1.5%
 bottom = false
 fixed-center = true
 line-size = 5
-;;background = #bb2f343f
-background = ${color.alpha}
-foreground = ${color.fg}
+background = #bb2f343f
+;background = ${color.alpha}
+;foreground = ${color.fg}
 
 spacing = 0
 module-margin-left = 0
@@ -73,12 +77,12 @@ padding = 0
 ;tray-padding = 2
 ;tray-maxsize = 20
 ;tray-scale = 1.0
-;tray-position = right
+;tray-position = center
 ;tray-background = ${color.bgs}
 
 
-;radius-top = 4
-;radius-bottom = 4
+radius-top = 10
+radius-bottom = 10
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -122,9 +126,9 @@ wm-restack = bspwm
 ;; ;-   module position  -; ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-modules-left = workspaces launcher
-modules-center = xwindow
-modules-right = time date
+;modules-left = xwindow workspaces launcher
+modules-center = launcher time date volume battery
+;modules-right = time date
 ;;rounded-left-colored-two rounded-left-colored
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ;- module position end-; ;;
@@ -140,7 +144,7 @@ type = custom/text
 content-prefix = 
 content-prefix-padding = 1
 
-content = " Menu "
+content = " Menu  "
 
 ; "click-(left|middle|right)" will be executed using "/usr/bin/env sh -c $COMMAND"
 click-left = ~/.config/polybar/blocks/scripts/launcher.sh &
@@ -245,12 +249,10 @@ type = internal/pulseaudio
 
 format-volume = <ramp-volume> <label-volume>
 format-volume-padding = 2
-format-volume-background = ${color.bg4}
 
 label-volume = %percentage%%
 label-volume-foreground = ${color.txt}
 label-muted = "婢"
-label-muted-background = ${color.bg4}
 label-muted-foreground = ${color.txt}
 label-muted-padding = 2
 
@@ -279,12 +281,10 @@ time-format = %H:%M
 battery = BAT0
 adapter = ACAD
 format-charging = <animation-charging> <label-charging>
-format-charging-background = ${color.bg4}
 format-charging-padding = 2
 label-charging = %percentage%%
 label-charging-foreground = ${color.txt}
 format-discharging = <ramp-capacity> <label-discharging>
-format-discharging-background = ${color.bg4}
 format-discharging-padding = 2
 label-discharging = %percentage%%
 label-discharging-foreground = ${color.txt}
@@ -357,7 +357,6 @@ type = internal/date
 interval = 1.0
 label =  %date%
 label-padding = 0
-label-background = ${color.bg5}
 label-foreground = ${color.txt}
 date =  %a %d/%m%
 
@@ -374,7 +373,6 @@ type = internal/date
 interval = 1.0
 label =  %time%
 label-padding-right = 2
-label-background = ${color.bg5}
 label-foreground = ${color.txt}
 time =  %k:%M
 
@@ -478,12 +476,12 @@ content-padding = 1
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ;-    modules end     -; ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-[bar/secondry]
-inherit = bar/main
-bottom = true
-modules-left = wlan
-modules-center = mpd spotify
-modules-right = volume battery
-tray-position = left
-tray-detached = false
+;
+;[bar/secondry]
+;inherit = bar/main
+;bottom = true
+;modules-left = wlan
+;modules-center = mpd spotify
+;modules-right = volume battery
+;tray-position = left
+;tray-detached = false
