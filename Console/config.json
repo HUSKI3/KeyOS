@@ -1,0 +1,7 @@
+{
+"name": "Survey Backend",
+"version": "0.0.01",
+"run_script": "run_app.py",
+"author": "Artur Z",
+"license": "MIT"
+}

@@ -1,0 +1,16 @@
+h1{
+	font-size: 60px;
+	color: #4e5f6e;
+}
+body{
+	background-color: #e8ecf2;
+	background-image: url('https://cdn.pixabay.com/photo/2019/06/05/05/02/snow-4252977_1280.jpg') !important;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+box{
+	background-color: #a3b1bc;
+}
+.game-list .box {
+	background-color: #a3b1bc;
+}
