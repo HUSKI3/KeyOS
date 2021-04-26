@@ -1,0 +1,9 @@
+{
+                        "name":"slate",
+                        "comment":"A basic slate theme",
+                        "location":"slate",
+                        "author":"KeyOS Original by Artur Z",
+                        "image":"slate/preview.png",
+                        "css_loc":"slate/theme.css",
+			"flags":{"experimental":"true"}
+}

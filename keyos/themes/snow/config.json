@@ -1,0 +1,11 @@
+{
+                        "name":"snow",
+                        "comment":"A snow theme",
+                        "location":"snow",
+                        "author":"KeyOS Original by Artur Z",
+                        "image":"snow/preview.png",
+                        "css_loc":"snow/theme.css",
+			"flags":{
+				"experimental":"True"
+				}
+}

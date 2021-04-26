@@ -1,0 +1,2 @@
+zenity --password --title="sudo password prompt"
+cd ~/.keyos && poetry run python3 open_settings.py
