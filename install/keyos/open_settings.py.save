@@ -1,0 +1,30 @@
+from PyQt5.QtCore import *
+from PyQt5 import *
+from PyQt5.QtGui import *
+from PyQt5.QtWebEngineWidgets import *
+from PyQt5 import uic
+import sys
+import ezconf
+from pathlib import Path
+
+config = ezconf.config()
+home_path = str(Path.home())
+config.read(home_path+"/.keyos/config.json")
+
+class MainWindow(QMainWindow):
+	def __init__(self, *args, **kwargs):
+		super(MainWindow,self).__init__(*args, **kwargs)
+		uic.loadUi(home_path+'/.keyos/settings.ui', self)
+		self.setWindowTitle("Configure Key OS")
+		self.AcceptButton = self.findChild(QtWidgets.QPushButton, 'pushButton')
+		self.button.clicked.connect(self.accept)
+		self.show()
+
+	def accept():
+		print("accepted")
+		self.close()
+
+app = QApplication(sys.argv)
+window = MainWindow()
+
+app.exec_()

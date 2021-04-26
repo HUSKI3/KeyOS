@@ -33,3 +33,5 @@ bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
 
 compton&
+nitrogen --restore&
+cd ~/.keyos/Console && poetry run python3 run_app.py& poetry run python3 run_desktop.py&

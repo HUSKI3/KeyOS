@@ -134,10 +134,10 @@ class MainWindow(QMainWindow):
 		self.close()
 
 	def disable_usb_device(self,usb_node):
-		subprocess.run("echo \'{0}\' | sudo tee /sys/bus/usb/drivers/usb/unbind".format(usb_node).split(" "))
+		subprocess.run("pw=$(zenity --entry --title='Password needed' --text='Enter password:' --hide-text) && echo $pw | sudo -S cd . && echo \'{0}\' | sudo tee /sys/bus/usb/drivers/usb/unbind".format(usb_node).split(" "))
 
 	def enable_usb_device(self,usb_node):
-		subprocess.call("echo \'{0}\' | sudo tee /sys/bus/usb/drivers/usb/bind".format(usb_node).split(" ")) 
+		subprocess.run("echo \'{0}\' | sudo tee /sys/bus/usb/drivers/usb/bind".format(usb_node).split(" ")) 
 		if os.path.exists("/sys/bus/usb/devices/{0}/driver".format(usb_node)):
 			return True
 		else:

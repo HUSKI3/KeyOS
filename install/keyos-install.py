@@ -44,25 +44,27 @@ print("Starting UI...")
 # Setting up other parts
 def setup_others():
 	print("You are about to install the themes additional packages")
-	# Configs
+	# Configs & other parts
 	os.system("cp -r configs/* ~/.config/")
+	os.system("mkdir ~/.keyos")
+	os.system("cp -r Console/ ~/.keyos/")
+	os.system("cp -r keyos/* ~/.keyos/")
 	# git clone --depth=1 https://github.com/adi1090x/rofi.git
 	cmd = "git clone --depth=1 https://github.com/adi1090x/rofi.git && cd rofi && chmod +x setup.sh && bash setup.sh".split(" ")
 	cmd = subprocess.run(cmd, text=True)
 	if cmd.returncode != 0:
-		print(red+"[Error] An error occured while installing the rofi theme! Quitting"+reset)
-		quit()
+		print(red+"[Warn] An error occured while installing the rofi theme! But it is not required by the system"+reset)
 	# Touchegg
 	cmd = "sudo add-apt-repository ppa:touchegg/stable".split(" ")
 	cmd = subprocess.run(cmd, text=True)
 	if cmd.returncode != 0:
 		print(red+"[Warn] An error occured while adding the touchegg repo, but it's not important!"+reset)
 	# uhubctl
-	cmd = "git clone https://github.com/mvp/uhubctl".split(" ")
-	cmd = subprocess.run(cmd, text=True)
-	if cmd.returncode != 0:
-		print(red+"[Error] An error occured while cloning uhubctl!"+reset)
-	os.system("cd uhubctl && make")
+	#cmd = "git clone https://github.com/mvp/uhubctl".split(" ")
+	#cmd = subprocess.run(cmd, text=True)
+	#if cmd.returncode != 0:
+	#	print(red+"[Error] An error occured while cloning uhubctl!"+reset)
+	#os.system("cd uhubctl && make")
 	print("Finished!")
 
 # Installation
