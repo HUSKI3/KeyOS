@@ -31,5 +31,11 @@ bspc rule -a Chromium desktop='^2'
 bspc rule -a mplayer2 state=floating
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
+bspc rule -a keyos-install.py state=floating focus=on
+bspc rule -a qtlaunch.py state=above focus=on
 
-compton --backend glx --paint-on-overlay --vsync &
+compton --backend glx --paint-on-overlay --vsync&
+pkill -9 xwinwrap
+animbg&
+
+
