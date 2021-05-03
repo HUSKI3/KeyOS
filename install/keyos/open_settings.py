@@ -19,7 +19,7 @@ device_re = re.compile(b"Bus\s+(?P<bus>\d+)\s+Device\s+(?P<device>\d+).+ID\s(?P<
 df = subprocess.check_output("lsusb")
 
 config = ezconf.config()
-home_path = str(Path.home())
+home_path = sys.argv[1]
 config.read(home_path+"/.keyos/config.json")
 
 def get_devices():
@@ -125,19 +125,39 @@ class MainWindow(QMainWindow):
 						os.system('''DISPLAY=:0.0 notify-send "KeyOS Debugger" -t 6000 "Enabled device: {}"'''.format(name))
 					else:
 						os.system('''DISPLAY=:0.0 notify-send "KeyOS Debugger" -t 6000 "Failed to enable device: {}"'''.format(name))
-				
+			else:
+				name = item.text()
+				for device in devices_l:
+					if device['name'] == name:
+						dev_loc_id = device['location']
+				check = self.disable_usb_device(dev_loc_id)
+				if os.path.exists("/sys/bus/usb/devices/{0}/driver".format(dev_loc_id)):
+					if check:
+						os.system('''DISPLAY=:0.0 notify-send "KeyOS Debugger" -t 6000 "Disabled device: {}"'''.format(name))
+					else:
+						os.system('''DISPLAY=:0.0 notify-send "KeyOS Debugger" -t 6000 "Failed to disable device: {}"'''.format(name))
 
-		self.close()
+		#self.close()
 
 	def exit(self):
 		print("Exiting")
 		self.close()
 
 	def disable_usb_device(self,usb_node):
-		subprocess.run("pw=$(zenity --entry --title='Password needed' --text='Enter password:' --hide-text) && echo $pw | sudo -S cd . && echo \'{0}\' | sudo tee /sys/bus/usb/drivers/usb/unbind".format(usb_node).split(" "))
+		# The script is actually located in the user directory, but when we use sudo
+		# the $HOME var returns /root, we can go around this issue by parsing the actual
+		# home as an argument. Weird implementation, but I don't see an issue.
+
+		os.system("sudo bash {0}/.keyos/unbind \'{1}\'".format(sys.argv[1],usb_node))
+		os.system('''DISPLAY=:0.0 notify-send "KeyOS Debugger" -t 6000 "Trying to disable device: {}"'''.format(usb_node))
+		if os.path.exists("/sys/bus/usb/devices/{0}/driver".format(usb_node)):
+			return False
+		else:
+			os.system("ls -l /sys/bus/usb/devices/{0}/driver".format(usb_node))
+			return True
 
 	def enable_usb_device(self,usb_node):
-		subprocess.run("echo \'{0}\' | sudo tee /sys/bus/usb/drivers/usb/bind".format(usb_node).split(" ")) 
+		os.system("sudo bash {0}/.keyos/bind \'{1}\'".format(sys.argv[1],usb_node))
 		if os.path.exists("/sys/bus/usb/devices/{0}/driver".format(usb_node)):
 			return True
 		else:
