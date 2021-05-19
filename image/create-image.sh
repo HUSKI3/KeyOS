@@ -46,7 +46,7 @@ patch $JETSON_BUILD_DIR/Linux_for_Tegra/nv_tegra/nv-apply-debs.sh < patches/nv-a
 pushd $JETSON_BUILD_DIR/Linux_for_Tegra/ > /dev/null
 
 printf "Extract L4T...        "
-./apply_binaries.sh > /dev/null
+#./apply_binaries.sh > /dev/null
 printf "[OK]\n"
 
 printf "Create image...       "

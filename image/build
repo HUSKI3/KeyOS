@@ -1,4 +1,4 @@
 export JETSON_ROOTFS_DIR=/media/drive1/JetsonNano/rootfs
 export JETSON_BUILD_DIR=/media/drive1/JetsonNano/build_dir
-sudo -E ./create-rootfs.sh
-#sudo -E ./create-image.sh
+#sudo -E ./create-rootfs.sh
+sudo -E ./create-image.sh
