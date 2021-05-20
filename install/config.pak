@@ -1,4 +1,4 @@
 {
 	"packages":["libusb-1.0-0-dev","libusb-dev","libjsoncpp-dev","libxinerama-dev","libxrandr-dev","libxi-dev","libxcursor-dev","libusb-1.0-0-dev"],
-	"tools":["clang","bspwm","sxhkd","sddm","compton","polybar"]
+	"tools":["clang","bspwm","sxhkd","sddm","compton","polybar","chromium-browser"]
 }

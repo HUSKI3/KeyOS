@@ -1,3 +1,3 @@
 sudo apt install python3-pip
 pip3 install poetry
-python3.8 -m poetry run sudo python3 keyos-install-cli.py
+python3 -m poetry run sudo python3 keyos-install-cli.py
