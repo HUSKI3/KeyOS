@@ -74,7 +74,7 @@ Tools: {}
 '''.format(dep_count,tool_count, deps, tools))
 
 input("Press enter to continue...")
-r
+
 # install(stuff)
 for dep in deps:
 	install(dep)
