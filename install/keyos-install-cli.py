@@ -57,12 +57,6 @@ def setup_others():
 	cmd = subprocess.run(cmd)
 	if cmd.returncode != 0:
 		print(red+"[Warn] An error occured while adding the touchegg repo, but it's not important!"+reset)
-	# uhubctl
-	#cmd = "git clone https://github.com/mvp/uhubctl".split(" ")
-	#cmd = subprocess.run(cmd)
-	#if cmd.returncode != 0:
-	#	print(red+"[Error] An error occured while cloning uhubctl!"+reset)
-	#os.system("cd uhubctl && make")
 	print("Finished!")
 
 # Installation
@@ -80,7 +74,7 @@ Tools: {}
 '''.format(dep_count,tool_count, deps, tools))
 
 input("Press enter to continue...")
-# Open progress bar
+r
 # install(stuff)
 for dep in deps:
 	install(dep)
