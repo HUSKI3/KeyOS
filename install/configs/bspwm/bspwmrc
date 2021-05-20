@@ -35,4 +35,4 @@ bspc config normal_border_color "#0c576e"
 compton --backend glx --paint-on-overlay --vsync &
 
 cd ~/Console/ && poetry run python3 run_app.py &
-cd ~/Console/ && poetry run python3 run_deskop.py &
+cd ~/Console/ && poetry run python3 run_desktop.py &
