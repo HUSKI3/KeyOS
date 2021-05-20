@@ -45,7 +45,7 @@ def setup_others():
 	# Configs & other parts
 	os.system("cp -r configs/* ~/.config/")
 	os.system("mkdir ~/.keyos")
-	os.system("cp -r Console/ ~/.keyos/")
+	os.system("cp -r Console/ ~/")
 	os.system("cp -r keyos/* ~/.keyos/")
 	# git clone --depth=1 https://github.com/adi1090x/rofi.git
 	cmd = "git clone --depth=1 https://github.com/adi1090x/rofi.git && cd rofi && chmod +x setup.sh && bash setup.sh".split(" ")
