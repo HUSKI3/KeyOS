@@ -28,7 +28,7 @@ tool_count =  len(config.get("tools"))
 # Presetup
 print("=========================")
 cmd = "sudo add-apt-repository ppa:kgilmer/speed-ricer".split(" ")
-cmd = subprocess.run(cmd, text=True)
+cmd = subprocess.run(cmd)
 if cmd.returncode != 0:
 	print(blue+"[Warn] An error occured while doing pre-setup, but it's not important!"+reset)
 
@@ -49,17 +49,17 @@ def setup_others():
 	os.system("cp -r keyos/* ~/.keyos/")
 	# git clone --depth=1 https://github.com/adi1090x/rofi.git
 	cmd = "git clone --depth=1 https://github.com/adi1090x/rofi.git && cd rofi && chmod +x setup.sh && bash setup.sh".split(" ")
-	cmd = subprocess.run(cmd, text=True)
+	cmd = subprocess.run(cmd)
 	if cmd.returncode != 0:
 		print(red+"[Warn] An error occured while installing the rofi theme! But it is not required by the system"+reset)
 	# Touchegg
 	cmd = "sudo add-apt-repository ppa:touchegg/stable".split(" ")
-	cmd = subprocess.run(cmd, text=True)
+	cmd = subprocess.run(cmd)
 	if cmd.returncode != 0:
 		print(red+"[Warn] An error occured while adding the touchegg repo, but it's not important!"+reset)
 	# uhubctl
 	#cmd = "git clone https://github.com/mvp/uhubctl".split(" ")
-	#cmd = subprocess.run(cmd, text=True)
+	#cmd = subprocess.run(cmd)
 	#if cmd.returncode != 0:
 	#	print(red+"[Error] An error occured while cloning uhubctl!"+reset)
 	#os.system("cd uhubctl && make")
@@ -69,7 +69,7 @@ def setup_others():
 
 def install(app):
 	command = "sudo apt install {} -y".format(app).split(" ")
-	cmd = subprocess.run(command, text=True)
+	cmd = subprocess.run(command)
 
 
 print('''Welcome to the KeyOS alpha, before you proceed please read the following:
