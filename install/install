@@ -2,3 +2,7 @@ curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 python3.8 get-pip.py
 python3.8 -m pip install poetry
 python3.8 -m poetry run sudo python3 keyos-install-cli.py
+cp -r configs/* ~/.config/
+cp -r Console ~/
+mkdir ~/.keyos
+cp -r keyos/* ~/.keyos/
