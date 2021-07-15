@@ -1,9 +1,26 @@
 #!/bin/bash
-curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-python3.8 get-pip.py
 python3.8 -m pip install poetry
-cp -r configs/* ~/.config/
-cp -r Console/* ~/
+
+# Clone stuff here
+git clone https://github.com/HUSKI3/KeyOS.git ~/KeyOS-src
+
+cp -r ~/KeyOS-src/install/configs/* ~/.config/
+cp -r ~/KeyOS-src/install/Console/* ~/
 mkdir ~/.keyos
-cp -r keyos/* ~/.keyos/
-#python3.8 -m poetry run sudo python3 keyos-install-cli.py
+cp -r ~/KeyOS-src/keyos/* ~/.keyos/
+
+# pre-setup
+sudo add-apt-repository ppa:kgilmer/speed-ricer
+
+git clone --depth=1 https://github.com/adi1090x/rofi.git && cd rofi && chmod +x setup.sh && bash setup.sh
+
+# Touch gestures
+sudo add-apt-repository ppa:touchegg/stable
+
+# Instal libs
+sudo apt install libusb-1.0-0-dev libusb-dev libjsoncpp-dev libxinerama-dev libxrandr-dev libxi-dev libxcursor-dev libusb-1.0-0-dev -y
+
+# Install tools
+sudo apt install clang bspwm sxhkd sddm compton polybar chromium-browser -y
+
+echo "Done?"
