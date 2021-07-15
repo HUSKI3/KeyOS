@@ -7,7 +7,7 @@ git clone https://github.com/HUSKI3/KeyOS.git ~/KeyOS-src
 cp -r ~/KeyOS-src/install/configs/* ~/.config/
 cp -r ~/KeyOS-src/Console/* ~/
 mkdir ~/.keyos
-cp -r ~/KeyOS-src/keyos/* ~/.keyos/
+cp -r ~/KeyOS-src/install/keyos/* ~/.keyos/
 
 # pre-setup
 sudo add-apt-repository ppa:kgilmer/speed-ricer
