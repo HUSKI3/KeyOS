@@ -7,11 +7,10 @@
 #           |_|
 
 pgrep -x sxhkd > /dev/null || sxhkd &
-$HOME/.config/polybar/launch.sh
-$HOME/.config/picom.conf
+#$HOME/.config/polybar/launch.sh
+#$HOME/.config/picom.conf
 
-bspc monitor -d I II III IV V VI VII VIII IX X
-
+bspc monitor -d I II III
 bspc config border_width        3
 bspc config window_gap          12
 bspc config border_radius
